@@ -1,3 +1,16 @@
 [
-    
+    {
+        "id": "5166b5e6-08f2-4cd6-ab59-d8674998a402",
+        "name": "Default",
+        "description": "This is default cube",
+        "imageUrl": "https://google.com",
+        "difficulty": 1
+    },
+    {
+        "id": "8b9ce13a-dabf-4a22-b7b9-6023a480e248",
+        "name": "Default",
+        "description": "This is default cube",
+        "imageUrl": "https://google.com",
+        "difficulty": 1
+    }
 ]
