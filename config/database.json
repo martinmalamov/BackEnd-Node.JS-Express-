@@ -1,1 +1,44 @@
-[{"id":"0cf1e851-b991-4737-9034-8a5617cf6ced","name":"Default","description":"This is default cube","imageUrl":"https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg","difficulty":1},{"id":"78163185-f1cb-48ed-ab64-0dd88beabc16","name":"Default 1","description":"This is default1 cube","imageUrl":"https://images-na.ssl-images-amazon.com/images/I/61izOzq%2BBAL._SY355_.jpg","difficulty":7},{"id":"1df36456-1b54-4b04-b0e4-cfd7a6795089","name":"Default 2","description":"This is default2 cube","imageUrl":"https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg","difficulty":4},{"id":"1bd0ff6f-fce5-45e4-87ca-b5ba281ce660","name":"Default 3","description":"This is default3 cube","imageUrl":"https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg","difficulty":10},{"id":"f4b3cb49-fca2-4067-a49c-4b1d083e76e8","name":"cube 1 ","description":"first cube","imageUrl":"https://image.shutterstock.com/image-photo/assorted-dairy-products-milk-yogurt-260nw-530162824.jpg","difficulty":"1"},{"id":"faaf6ca3-f9f7-4a06-a443-0786f53307c2","name":"Second cube","description":"this is a second cube","imageUrl":"https://image.shutterstock.com/image-photo/assorted-dairy-products-milk-yogurt-260nw-530162824.jpg","difficulty":"5"}]
+[
+    {
+        "id": "0cf1e851-b991-4737-9034-8a5617cf6ced",
+        "name": "Default",
+        "description": "This is default cube",
+        "imageUrl": "https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg",
+        "difficulty": 1
+    },
+    {
+        "id": "78163185-f1cb-48ed-ab64-0dd88beabc16",
+        "name": "Default 1",
+        "description": "This is default1 cube",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61izOzq%2BBAL._SY355_.jpg",
+        "difficulty": 7
+    },
+    {
+        "id": "1df36456-1b54-4b04-b0e4-cfd7a6795089",
+        "name": "Default 2",
+        "description": "This is default2 cube",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
+        "difficulty": 4
+    },
+    {
+        "id": "1bd0ff6f-fce5-45e4-87ca-b5ba281ce660",
+        "name": "Default 3",
+        "description": "This is default3 cube",
+        "imageUrl": "https://thingsidesire.com/wp-content/uploads/2018/06/Eco-Dark-Rubik%E2%80%99s-Cube2.jpg",
+        "difficulty": 10
+    },
+    {
+        "id": "f4b3cb49-fca2-4067-a49c-4b1d083e76e8",
+        "name": "cube 1 ",
+        "description": "first cube",
+        "imageUrl": "https://image.shutterstock.com/image-photo/assorted-dairy-products-milk-yogurt-260nw-530162824.jpg",
+        "difficulty": "1"
+    },
+    {
+        "id": "faaf6ca3-f9f7-4a06-a443-0786f53307c2",
+        "name": "Second cube",
+        "description": "this is a second cube",
+        "imageUrl": "https://image.shutterstock.com/image-photo/assorted-dairy-products-milk-yogurt-260nw-530162824.jpg",
+        "difficulty": "5"
+    }
+]
