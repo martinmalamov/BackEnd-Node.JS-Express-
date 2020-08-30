@@ -5,8 +5,12 @@
     "version": "1.0.0",
     "main": "pathToMain",
     "dependencies": {
+        "bcrypt": "^5.0.0",
+        "cookie-parse": "^0.4.0",
+        "cookie-parser": "^1.4.5",
         "express": "^4.17.1",
         "express-handlebars": "^3.1.0",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.10.0",
         "uuid": "^8.3.0",
         "yarn": "^1.22.4"
