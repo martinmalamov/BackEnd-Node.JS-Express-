@@ -7,13 +7,20 @@ const router = Router()
 
 router.get('/', getUserStatus, async (req, res) => {
     const cubes = await getAllCubes()
-    
+
     res.render('index', {
         title: 'Cube Workshop',
         cubes,
         isLoggedIn: req.isLoggedIn
     })
 })
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('authId')
+
+    res.redirect('/')
+})
+
 router.get('/about', getUserStatus, (req, res) => {
     res.render('about', {
         title: 'About | Cube Workshop',
