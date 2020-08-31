@@ -64,11 +64,76 @@ const verifyUser = async (req, res) => {
         res.cookie('authId', token)
     }
 
-
     return status
+}
+
+const authAccess = (req, res, next) => {
+    const token = req.cookies['authId']
+
+    if (!token) {
+        return res.redirect('/')
+    }
+
+    try {
+        jwt.verify(token, config.privateKey)
+        next()
+    } catch (error) {
+        res.redirect('/')
+    }
+}
+
+const authAccessJSON = (req, res, next) => {
+    const token = req.cookies['authId']
+
+    if (!token) {
+        return res.json({
+            error: 'Not authenticated'
+        })
+    }
+
+    try {
+        jwt.verify(token, config.privateKey)
+        next()
+    } catch (error) {
+        return res.json({
+            error: 'Not authenticated'
+        })
+    }
+}
+
+const guestAccess = (req, res, next) => {
+    const token = req.cookies['authId']
+
+    if (!token) {
+        req.isLoggedIn = false
+    }
+    next()
+}
+
+const getUserStatus = (req, res, next) => {
+    const token = req.cookies['authId']
+
+    if (!token) {
+        //ERROR too many redirect if we use return !!!
+        // return res.redirect('/')
+        req.isLoggedIn = false
+    }
+
+    try {
+        jwt.verify(token, config.privateKey)
+        req.isLoggedIn = true
+    } catch (error) {
+        req.isLoggedIn = false
+    }
+    next()
+
 }
 
 module.exports = {
     saveUser,
-    verifyUser
+    authAccess,
+    verifyUser,
+    guestAccess,
+    getUserStatus,
+    authAccessJSON
 }

@@ -1,4 +1,7 @@
-const env = process.env.NODE_ENV || 'development';
+require('dotenv').config()
+
+const env = process.env.NODE_ENV
+// const env = process.env.NODE_ENV || 'development';
 
 const mongoose = require('mongoose')
 const config = require('./config/config')[env];
@@ -8,6 +11,10 @@ const authRouter = require('./routes/auth')
 const cubeRouter = require('./routes/cube')
 const accessoryRouter = require('./routes/accessory')
 const app = express();
+
+console.log('config DB : PORT ---->>> ' , config.port)
+console.log('config DB : PrivateKey ---->>> ' , config.privateKey)
+console.log('config DB : PASSWORD ---->>> ' , config.databaseUrl)
 
 mongoose.connect(config.databaseUrl, {
     useNewUrlParser: true,
