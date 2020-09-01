@@ -22,23 +22,29 @@ const saveUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-    const user = new User({
-        username,
-        password: hashedPassword
-    })
+    try {
+        const user = new User({
+            username,
+            password: hashedPassword
+        })
 
-    const userObject = await user.save()
+        const userObject = await user.save()
 
-    const token = generateToken({
-        userID: userObject._id,
-        username: userObject.username
-    })
+        const token = generateToken({
+            userID: userObject._id,
+            username: userObject.username
+        })
 
-    res.cookie('authId', token)
+        res.cookie('authId', token)
 
-    console.log('token', token)
+        return true
+    } catch (err) {
+        return {
+            error: true,
+            message: err
+        }
+    }
 
-    return true
 }
 
 const verifyUser = async (req, res) => {
@@ -49,22 +55,41 @@ const verifyUser = async (req, res) => {
 
     //get User by username
 
-    const user = await User.findOne({ username })
-    console.log(user)
+    try {
+        const user = await User.findOne({ username })
+        console.log(user)
 
-    const status = await bcrypt.compare(password, user.password)
-    console.log('status', status)
+        if (!user) {
+            return {
+                error: true,
+                message: 'There is no such user'
+            }
+        }
 
-    if (status === true) {
-        const token = generateToken({
-            userID: user._id,
-            username: user.username
-        })
+        const status = await bcrypt.compare(password, user.password)
+        console.log('status', status)
 
-        res.cookie('authId', token)
+        if (status === true) {
+            const token = generateToken({
+                userID: user._id,
+                username: user.username
+            })
+
+            res.cookie('authId', token)
+        }
+
+        return {
+            error: !status,
+            message: status || 'Wrong password'
+        }
+
+    } catch (err) {
+        return {
+            error: false,
+            message: 'There is no such user',
+            status
+        }
     }
-
-    return status
 }
 
 const authAccess = (req, res, next) => {

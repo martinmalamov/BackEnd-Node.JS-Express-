@@ -18,12 +18,16 @@ const mongoose = require('mongoose')
 const CubeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        match: [/^[A-Za-z0-9]+$/, 'Cube name is not valid'],
+        minlength: 5,
     },
     description: {
         type: String,
         required: true,
-        maxlenght: 2000
+        maxlenght: 2000,
+        match: [/^[A-Za-z0-9 ]+$/, 'Cube description is not valid'],
+        minlength: 20
     },
     imageUrl: {
         type: String,

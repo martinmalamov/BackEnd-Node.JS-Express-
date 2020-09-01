@@ -3,11 +3,16 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true ,
+        match: [/^[A-Za-z0-9]+$/ , 'Username is not valid'],
+        minlength: 5
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        // match: [/^[A-Za-z0-9]+$/ , 'Password contain invalid characters'],
+        // minlength: 8
     },
 })
 

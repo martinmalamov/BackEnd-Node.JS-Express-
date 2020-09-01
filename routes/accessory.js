@@ -1,6 +1,7 @@
 const express = require('express')
 const { authAccess, getUserStatus, authAccessJSON } = require('../controllers/user')
 const { attachedAccessories } = require('../controllers/accessories.js')
+const Accessory = require('../models/accessory')
 const { updateCube } = require('../controllers/cubes.js')
 // // const { getCube } = require('../controllers/database')
 // const Cube = require('../models/cube')
@@ -15,7 +16,7 @@ router.get('/create/accessory', authAccess, getUserStatus, (req, res) => {
     })
 })
 
-router.post('/create/accessory',authAccess, async (req, res) => {
+router.post('/create/accessory', authAccess, async (req, res) => {
     const {
         name,
         description,
@@ -28,9 +29,22 @@ router.post('/create/accessory',authAccess, async (req, res) => {
         imageUrl
     })
 
-    await accessory.save()
+    try {
+        await accessory.save()
 
-    res.redirect('/create/accessory')
+        res.render('createAccessory', {
+            title: 'Create accessory',
+            isLoggedIn: req.isLoggedIn
+        })
+    } catch (err) {
+        res.render('createAccessory', {
+            title: 'Create accessory',
+            isLoggedIn: req.isLoggedIn,
+            error: 'Accessory details are not valid'
+        })
+    }
+
+
 })
 
 router.get('/attach/accessory/:id', authAccess, getUserStatus, async (req, res, next) => {
@@ -46,27 +60,6 @@ router.get('/attach/accessory/:id', authAccess, getUserStatus, async (req, res, 
     } catch (err) {
         next(err)
     }
-
-    // const cube = await getCube(req.params.id)
-    // const accessories = await getAccessories()
-
-    // const cubeAccessories = cube.accessories.map(acc => acc._id.valueOf().toString())
-
-    // const notAttachedAccessories = accessories.filter(acc => {
-    //     const accessoryString = acc._id.valueOf().toString()
-    //     return !cubeAccessories.includes(accessoryString)
-    // })
-
-
-    // const canAttachAccessory = cube.accessories.length !== accessories.length && accessories.length > 0
-
-    // res.render('attachAccessory', {
-    //     title: 'Attach accessory',
-    //     ...cube,
-    //     accessories: notAttachedAccessories,
-    //     canAttachAccessory
-    // })
-
 })
 
 router.post('/attach/accessory/:id', authAccess, async (req, res) => {
